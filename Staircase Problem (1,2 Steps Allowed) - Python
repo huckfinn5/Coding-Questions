@@ -1,0 +1,15 @@
+'''creates a solution to the fibonocci sequence/ staircase probelm (with 1,2 steps allowed)'''
+
+def fib_staircase(place):
+    answer = [0,1]
+    if place ==0:
+        return 0
+    elif place ==1:
+        return 1
+    else:
+        counter = 1
+        while counter < place:
+            prev = answer[-1] + answer[-2]
+            answer.append(prev)
+            counter +=1
+    return answer[-1]

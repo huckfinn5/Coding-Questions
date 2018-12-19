@@ -1,0 +1,13 @@
+''' a function with finds the maximum possible amount of subsets'''
+
+def subsetts(list1, counter, set1):
+    if counter < len(list1):
+        var1 = subsetts(list1, counter+1, set1)
+        set2 = list(set1)
+        var2 = subsetts(list1, counter+1, set2)
+        return 1 + var1 + var2
+    else:
+        return 0
+    
+def total_subsetts(list1):
+    return 1 + subsetts(list1, 0, [])

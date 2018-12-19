@@ -1,0 +1,47 @@
+/* Solves the temperature Problem */
+
+
+vector<int> temperature_increase(vector<int> alpha){
+    vector<int> answer;
+    int start1 = alpha.size()-1;
+    answer.push_back(0);
+    Stack_Int stack;
+    vector<int> temp ={start1, alpha[start1]};
+    stack.add(temp);
+    for(int x = alpha.size()-2; x > -1; x --){
+        if(alpha[x] < stack.show_top()[1]){
+            answer.push_back(1);
+            vector<int> temp1 = {x,alpha[x]};
+            stack.add(temp1);
+        }
+        else{
+            while(stack.show_top()[1] < alpha[x]){
+                stack.remove();
+                if (stack.is_empty() == true){
+                    break;
+                };
+            };
+            if(stack.is_empty()==true){
+                answer.push_back(0);
+                vector<int> temp = {x, alpha[x]};
+                stack.add(temp);
+            }
+            else{
+                if(stack.show_top()[1] > alpha[x]){
+                    int temp2 = stack.show_top()[0];
+                    stack.remove();
+                    answer.push_back(temp2 - x);
+                    vector<int> temp = {x, alpha[x]};
+                    stack.add(temp);
+                }
+                else{
+                    int index = answer.size()-1;
+                    int temp2 = answer[index];
+                    answer.push_back(temp2 +1);
+                };
+            };
+        };
+    };
+    reverse_vector(answer);
+    return answer;
+};

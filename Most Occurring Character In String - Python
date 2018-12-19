@@ -1,0 +1,17 @@
+''' Finds the character in the string that happens the most'''
+def max_character(string1):
+    master_dict = {}
+    greatest = 0
+    chosen = 0
+    for x in range(0,len(string1)):
+        if string1[x] in master_dict:
+            master_dict[string1[x]] +=1
+            if master_dict[string1[x]] > greatest:
+                greatest = master_dict[string1[x]]
+                chosen = string1[x]
+        else:
+            master_dict[string1[x]] = 1
+            if master_dict[string1[x]] > greatest:
+                greatest = master_dict[string1[x]]
+                chosen = string1[x]
+    return (chosen, greatest)

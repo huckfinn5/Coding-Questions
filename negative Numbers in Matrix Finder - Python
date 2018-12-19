@@ -1,0 +1,13 @@
+''' find the total number of negativ  numbers in a list of lists in the most efficient manner possible'''
+
+def find_negative(list1):
+    counter = 0
+    for elements in range(0, len(list1)):
+        if list1[elements][0] >=0:
+            return counter
+        for individuals in range(0, len(list1[0])):
+            if list1[elements][individuals] < 0:
+                counter +=1
+            else:
+                break
+    return counter

@@ -1,0 +1,26 @@
+'''finds the days till the next warmest day in the forecast'''
+
+def temperatures(string):
+    counter = len(string)-1
+    stack = Stack()
+    stack.push((len(string)-1,string[counter]))
+    answer = [0]*len(string)
+    answer[counter] = 0
+    counter -=1
+    while counter >=0:
+        if string[counter] < stack.see_top()[1]:
+            stack.push((counter, string[counter]))
+            answer[counter] = 1
+            counter -=1
+        else:
+            while string[counter] >= stack.see_top()[1]:
+                stack.popper()
+                if stack.check_empty() == True:
+                    break
+            if stack.check_empty() == True:
+                answer[counter] = 0
+            else:
+                answer[counter] = stack.see_top()[0] - counter
+            stack.push((counter, string[counter]))
+            counter -=1
+    return answer

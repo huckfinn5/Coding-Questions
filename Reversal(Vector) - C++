@@ -1,0 +1,17 @@
+/* swaps values for an vector<int>*/
+
+void swap2( vector<int> &alpha, int i, int j){
+    int temp1 = alpha[i];
+    alpha[i] = alpha[j];
+    alpha[j] = temp1;
+};
+
+void reverse_vector(vector<int> &alpha){
+    int i = 0;
+    int j = alpha.size()-1;
+    while(i<j){
+        swap2(alpha, i, j);
+        i++;
+        j--;
+    };
+};

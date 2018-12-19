@@ -1,0 +1,88 @@
+class Stack_Char{
+public:
+    
+    vector<char> a;
+    
+    Stack_Char(){
+    };
+    
+    ~Stack_Char(){
+        cout << "this stack has been deleted" << endl;
+    };
+    
+    char remove(){
+        char b = a.back();
+        a.pop_back();
+        return b;
+        
+    };
+    
+    void add(char value){
+        a.push_back(value);
+    };
+    
+    void show(){
+        for(int x =0; x < a.size(); x++){
+            cout << a[x] << endl;
+        };
+        cout << endl;
+    };
+};
+
+class Stack_Int{
+public:
+    
+    vector<vector<int>> a;
+    
+    Stack_Int(){
+    };
+    
+    ~Stack_Int(){
+        cout << "this stack has been deleted" << endl;
+    };
+    
+    vector<int> remove(){
+        vector<int> b = a.back();
+        a.pop_back();
+        return b;
+        
+    };
+    
+    void add( vector<int> temp){
+        a.push_back(temp);
+    };
+    
+    vector<int> show_top(){
+        vector<int> temp = a.back();
+        return temp;
+    };
+    
+    bool is_empty(){
+        if (a.size() == 0){
+            return true;
+        }
+        else{
+            return false;
+        };
+    };
+};
+
+bool paranthesis_finder(string alpha){
+    unordered_map<char, char> master_dict1;
+    master_dict1['('] = ')';
+    master_dict1['['] = ']';
+    master_dict1['{'] = '}';
+    Stack_Char stack;
+    for(int x = 0; x < alpha.size(); x++){
+        if(master_dict1.find(alpha[x]) != master_dict1.end()){
+            stack.add(alpha[x]);
+        }
+        else{
+            char find = stack.remove();
+            if(master_dict1[find] != alpha[x]){
+                return false;
+            };
+        };
+    };
+    return true;
+};

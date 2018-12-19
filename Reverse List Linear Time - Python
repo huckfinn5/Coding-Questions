@@ -1,0 +1,15 @@
+''' reverses the order of of a list/array'''
+
+def swap(list1, i, j):
+    temp1 = list1[i]
+    list1[i] = list1[j]
+    list1[j] = temp1
+
+def reversal_list(list1):
+    i = 0
+    j = len(list1)-1
+    while i < j:
+        swap(list1,i,j)
+        i+=1
+        j-=1
+    

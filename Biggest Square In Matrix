@@ -1,0 +1,13 @@
+'''finds the largest square of 1s in a matrix consisting of Zeroes and Ones'''
+
+def biggest_square(matrix, answer):
+    greatest = 0
+    for rows in range(1,len(matrix)):
+        for cols in range(1,len(matrix[0])):
+            print(rows, cols)
+            answer[rows][cols] =  matrix[rows][cols] + min(answer[rows-1][cols], answer[rows][cols-1], answer[rows-1][cols-1])
+            if answer[rows][cols] > greatest:
+                greatest = answer[rows][cols]
+    for rows in answer:
+        print(rows)
+    return (greatest, greatest)

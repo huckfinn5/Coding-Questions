@@ -1,0 +1,14 @@
+/* returns the first repeated character in the string */
+
+char First_Repeat_Char(string string1){
+    unordered_map<char, int> master_dict;
+    for(int x = 0; x< string1.size(); x++){
+        if(master_dict.find(string1[x])==master_dict.end()){
+            master_dict[string1[x]] = 1;
+        }
+        else{
+            return string1[x];
+        };
+    };
+    return 'n';
+};

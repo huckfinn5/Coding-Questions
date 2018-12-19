@@ -1,0 +1,10 @@
+/* randomy takes a vector and shuffles it */
+
+void random_shuffle(vector<int> &alpha){
+    srand(time(NULL));
+    for( int x = alpha.size()-1; x> -1; x--){
+        double r = rand()/ (double) RAND_MAX;
+        int assign = r*x;
+        swap2(alpha, assign, x);
+    };
+};

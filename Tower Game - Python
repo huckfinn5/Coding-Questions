@@ -1,0 +1,24 @@
+''' finds the optimum tower route to get through the tower game'''
+        
+def towers_problem(list1):
+    answer = []
+    answer.append(list1[0])
+    found = False
+    starter = 0
+    while found == False:
+        start = answer[-1]
+        greatest = 0
+        found1 = 0
+        for x in range(0, start+1):
+            temp = starter + x + list1[starter + x]
+            if temp > greatest:
+                greatest = temp
+                if greatest >= len(list1):
+                    answer.append(list1[starter+x])
+                    return answer
+                found1 = starter + x
+        answer.append(list1[found1])
+        if found1 == starter:
+            return False
+        starter = found1
+    return False

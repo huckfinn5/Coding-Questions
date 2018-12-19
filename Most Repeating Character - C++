@@ -1,0 +1,21 @@
+/* returns the most repeated character in the string */
+
+int Most_Repeated_Character(string string1){
+    unordered_map<char, int> master_dict;
+    int greatest = 1;
+    char character = string1[0];
+    for(int x = 0; x < string1.size(); x++){
+        if(master_dict.find(string1[x])==master_dict.end()){
+            master_dict[string1[x]] = 1;
+        }
+        else{
+            master_dict[string1[x]] ++;
+            if(master_dict[string1[x]] > greatest){
+                greatest = master_dict[string1[x]];
+                character = string1[x];
+            }
+        };
+    };
+    cout << character << "   " << greatest << endl;
+    return greatest;
+};

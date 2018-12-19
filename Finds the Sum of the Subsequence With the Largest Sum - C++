@@ -1,0 +1,17 @@
+/* Finds the sum of the subsequence with the largest sum */
+
+int largest_sum(vector<int> alpha){
+    vector<int> answer;
+    answer.push_back(alpha[0]);
+    for (int x = 1; x < alpha.size(); x++){
+        int temp1 = max(alpha[x], answer[x-1] + alpha[x]);
+        answer.push_back(temp1);
+    };
+    int greatest = 0;
+    for(int x = 0; x < answer.size();x++){
+        if(answer[x] > greatest){
+            greatest = answer[x];
+        };
+    };
+    return greatest;
+};

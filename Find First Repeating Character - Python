@@ -1,0 +1,9 @@
+''' find the first repeating element of a list '''
+
+def first_repeat(list1):
+    elements = {}
+    for x in range(0, len(list1)):
+        if list1[x] not in elements:
+            elements[list1[x]] = 0
+        else:
+            return (list1[x],x)

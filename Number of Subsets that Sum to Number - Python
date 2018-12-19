@@ -1,0 +1,23 @@
+''' given a set of numbers this function will find all the subsetts which are capapble of summing to a given target number'''
+    
+    
+def subsets(list1, subsett, master_dict, counter, target):
+    key = str(sum(subsett)) + str(counter)
+    if key in master_dict:
+        return master_dict[key]
+    elif sum(subsett) == target:
+        master_dict[key] = 1
+        return 1
+    elif sum(subsett) > target:
+        master_dict[key] = 0
+        return 0
+    elif counter < len(list1):
+        subsett1 = list(subsett)
+        subsett1.append(list1[counter])
+        var1 = subsets(list1,subsett, master_dict, counter+1, target)
+        var2 = subsets(list1, subsett1, master_dict, counter +1, target)
+        master_dict[key] = var1 + var2
+        return var1 + var2
+    else:
+        return 0
+    

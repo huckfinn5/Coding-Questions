@@ -1,0 +1,17 @@
+'''find the consecutive integers which produce the largest sum when added together'''
+
+def longest(list1):
+    counter = 0
+    answer = [0]*len(list1)
+    answer[counter] = list1[counter]
+    counter +=1
+    while counter < len(list1):
+        answer[counter] = max(answer[counter-1] + list1[counter], list1[counter])
+        counter +=1
+    max1 = max(answer)
+    index1 = answer.index(max1)
+    counter = index1
+    while answer[counter] > 0:
+        counter -=1
+    start = counter +1
+    return max(answer), start, index1

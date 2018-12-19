@@ -1,0 +1,26 @@
+'''implementing a queue using the stack data structure'''
+
+class Queue_Stack:
+    
+    def __init__(self):
+        self.add_stack = Stack()
+        self.remove_stack = Stack()
+        
+    def insert(self, value):
+        self.add_stack.push(value)
+        
+    def remove(self):
+        if self.empty() == True:
+            return "thers nothin in the queu"
+        if self.remove_stack.check_empty():
+            while self.add_stack.check_empty() == False:
+                self.remove_stack.push(self.add_stack.popper())
+            return self.remove_stack.popper()
+        else:
+            return self.remove_stack.popper()
+            
+    def empty(self):
+        if self.add_stack.check_empty() == True and self.remove_stack.check_empty() == True:
+            return True
+        else:
+            return False

@@ -1,0 +1,33 @@
+'' possible combinations of numbers using dp '''
+
+def possible_letters(string):
+    answer = [1]
+    counter = 0
+    while counter < len(string):
+        if counter == 0:
+            answer.append(answer[-1])
+        else:
+            if int(string[counter-1]) < 2:
+                answer.append(answer[-2] + answer[-1])
+            elif int(string[counter-1]) ==2 and int(string[counter]) <=6:
+                answer.append(answer[-2] + answer[-1])
+            else:
+                answer.append(answer[-1])
+        counter +=1
+    return answer[-1]
+
+''' possible combinations of numbers using recursion'''
+
+def possible_letters1(string, counter):
+    if counter < len(string)-1:
+        if int(string[counter]) < 2:
+            return 1 + possible_letters1(string, counter+1) + possible_letters1(string, counter+2)
+        elif int(string[counter]) ==2 and int(string[counter+1]) <=6:
+            return 1 + possible_letters1(string, counter+1) + possible_letters1(string, counter+2)
+        else:
+            return possible_letters1(string, counter+1)
+    else:
+        return 0
+    
+def possible_letters_aux(string):
+    return 1 + possible_letters1(string,0)

@@ -1,0 +1,36 @@
+/* solves the fibbonacci thing recursively */
+
+int fibb_recursive(int place){
+    if(place ==0){
+        return 0;
+    }
+    else if (place ==1){
+        return 1;
+    }
+    else{
+        return fibb_recursive(place-1) + fibb_recursive(place-2);
+    };
+}
+
+
+/* solves the fibb thing using dynamic programming */
+
+int fibb_dynamic(int place){
+    vector<int> answer;
+    answer.push_back(0);
+    answer.push_back(1);
+    if(place ==0){
+        return 0;
+    }
+    else if (place ==1){
+        return 1;
+    }
+    else{
+        int counter = 2;
+        while (counter < place+1){
+            answer.push_back(answer[counter -1] + answer[counter -2]);
+            counter +=1;
+        };
+        return answer[counter-1];
+    };
+};

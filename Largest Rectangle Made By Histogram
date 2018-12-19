@@ -1,0 +1,22 @@
+''' finds the biggest rectangle under a histrogram'''
+
+def histogram(list1):
+    master_dict = {}
+    for x in range(0,len(list1)):
+        if list1[x] in master_dict:
+            master_dict[list1[x]][1] = x
+        else:
+            master_dict[list1[x]] = [x,x]
+    greatest = 0
+    chosen = 0
+    for x in master_dict:
+        if len(master_dict[x]) > 1:
+            max1 = master_dict[x][1] + 1
+            min1 = master_dict[x][0]
+            width = max1 - min1
+        else:
+            width = 1
+        if (width * x) > greatest:
+            greatest = width *x
+            chosen = x
+    return greatest, chosen
